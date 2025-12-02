@@ -3,1012 +3,1108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Definitive Word - Premium Ebook Store</title>
+    <title>The Definitive Word - Simple Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Variables for consistent theming */
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --success: #2ecc71;
-            --warning: #f39c12;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --blue: #1e3a8a;
+            --red: #dc2626;
+            --gold: #d4af37;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #1e293b;
+            --text-dark: #334155;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-lg: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            width: 90%;
+            color: var(--text-dark);
+            background-color: var(--light-gray);
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 20px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-        }
-
-        .btn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-
-        .btn-accent {
-            background: var(--accent);
-        }
-
-        .btn-accent:hover {
-            background: #c0392b;
-        }
-
-        /* Header Styles */
+        /* Header */
         header {
-            background: white;
+            background: linear-gradient(135deg, var(--blue), #152c6e);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
             box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
         }
 
         .logo {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo p {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        /* Store Navigation */
+        .store-nav {
             display: flex;
-            align-items: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
         }
 
-        .logo i {
-            color: var(--secondary);
-            margin-right: 10px;
-        }
-
-        .search-bar {
-            flex: 1;
-            max-width: 500px;
-            margin: 0 20px;
-            position: relative;
-        }
-
-        .search-bar input {
-            width: 100%;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            font-size: 1rem;
-        }
-
-        .search-bar button {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
             border: none;
-            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
             cursor: pointer;
-        }
-
-        .user-actions {
-            display: flex;
-            align-items: center;
-        }
-
-        .user-actions a {
-            margin-left: 15px;
-            color: var(--primary);
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .user-actions a:hover {
-            color: var(--secondary);
-        }
-
-        .cart-count {
-            background: var(--accent);
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: -5px;
-            right: -5px;
-        }
-
-        .cart-icon {
-            position: relative;
-        }
-
-        nav {
-            background: var(--primary);
-            padding: 10px 0;
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-        }
-
-        nav li {
-            margin: 0 15px;
-        }
-
-        nav a {
-            color: white;
+            transition: all 0.3s;
             font-weight: 500;
-            padding: 5px 0;
-            transition: var(--transition);
-            position: relative;
         }
 
-        nav a:hover {
-            color: var(--secondary);
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background: var(--secondary);
-            transition: var(--transition);
+        .nav-btn.active {
+            background: var(--gold);
+            color: var(--dark-gray);
         }
 
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-
-        /* Featured Books */
-        .section-title {
-            text-align: center;
-            margin: 50px 0 30px;
-            color: var(--primary);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 80px;
-            height: 3px;
-            background: var(--secondary);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .book-card {
+        /* Quick Stats */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
             background: white;
-            border-radius: 8px;
-            overflow: hidden;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
             box-shadow: var(--shadow);
-            transition: var(--transition);
+            flex-wrap: wrap;
         }
 
-        .book-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        .stat-item {
+            text-align: center;
+            padding: 0.5rem;
         }
 
-        .book-cover {
-            height: 300px;
-            overflow: hidden;
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--blue);
         }
 
-        .book-cover img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .book-card:hover .book-cover img {
-            transform: scale(1.05);
-        }
-
-        .book-info {
-            padding: 15px;
-        }
-
-        .book-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-
-        .book-author {
-            color: #666;
+        .stat-label {
             font-size: 0.9rem;
-            margin-bottom: 10px;
+            color: var(--text-dark);
         }
 
-        .book-price {
+        /* Main Content Area */
+        .content-area {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-area {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar - Cart & User */
+        .sidebar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            color: var(--blue);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Cart Items */
+        .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 10px;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--medium-gray);
         }
 
-        .price {
-            font-weight: 700;
-            color: var(--primary);
+        .cart-item:last-child {
+            border-bottom: none;
         }
 
-        .original-price {
-            text-decoration: line-through;
-            color: #999;
-            margin-right: 5px;
+        .cart-item-name {
+            font-weight: 500;
         }
 
-        .sale-price {
-            color: var(--accent);
+        .cart-item-price {
+            color: var(--red);
+            font-weight: bold;
         }
 
-        /* Categories */
-        .categories {
-            background: var(--light);
-            padding: 50px 0;
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .category-card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            background: var(--secondary);
-            color: white;
-        }
-
-        .category-card i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-
-        .category-card:hover i {
-            color: white;
-        }
-
-        /* Newsletter */
-        .newsletter {
-            background: var(--primary);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            margin-bottom: 20px;
-        }
-
-        .newsletter p {
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-
-        .newsletter-form {
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--blue);
             display: flex;
-            max-width: 500px;
-            margin: 0 auto;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--medium-gray);
         }
 
-        .newsletter-form input {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 4px 0 0 4px;
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
-        .newsletter-form button {
-            background: var(--accent);
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            height: 150px;
+            background: linear-gradient(135deg, var(--blue), var(--red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            border: none;
-            padding: 0 20px;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            transition: var(--transition);
+            font-size: 3rem;
         }
 
-        .newsletter-form button:hover {
-            background: #c0392b;
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            color: var(--blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .product-description {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            color: var(--red);
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--red), #b91c1c);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #b91c1c, var(--red));
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #152c6e;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--blue);
+            color: var(--blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-small {
+            padding: 0.3rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* Login Area */
+        .login-form {
+            background: var(--light-gray);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            color: var(--blue);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--medium-gray);
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        /* User Info */
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--light-gray);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark-gray);
+        }
+
+        /* Tutorial Box */
+        .tutorial-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--blue);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .tutorial-box h3 {
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tutorial-steps {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tutorial-steps li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tutorial-steps li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Status Messages */
+        .status-message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .status-info {
+            background: #e3f2fd;
+            color: var(--blue);
+            border: 1px solid var(--blue);
+            display: block;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
         }
 
         /* Footer */
         footer {
-            background: #1a252f;
-            color: white;
-            padding: 50px 0 20px;
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--medium-gray);
+            color: var(--text-dark);
+            font-size: 0.9rem;
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-column h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--secondary);
-        }
-
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-column ul li a {
-            transition: var(--transition);
-        }
-
-        .footer-column ul li a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-
-        .social-links {
+        /* Simple Cart Controls */
+        .cart-controls {
             display: flex;
-            margin-top: 20px;
+            gap: 0.5rem;
+            align-items: center;
         }
 
-        .social-links a {
+        .cart-control-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: none;
+            background: var(--medium-gray);
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            margin-right: 10px;
-            transition: var(--transition);
         }
 
-        .social-links a:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
+        .cart-control-btn:hover {
+            background: var(--blue);
+            color: white;
         }
 
-        .copyright {
+        /* Empty States */
+        .empty-state {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: #aaa;
+            padding: 3rem 1rem;
+            color: var(--text-dark);
         }
 
-        /* Cart Modal */
-        .cart-modal {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 380px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            z-index: 1100;
-            overflow-y: auto;
-        }
-
-        .cart-modal.active {
-            right: 0;
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .cart-header h2 {
-            color: var(--primary);
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary);
-        }
-
-        .cart-items {
-            padding: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .cart-item img {
-            width: 80px;
-            height: 100px;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-
-        .cart-item-details {
-            flex: 1;
-        }
-
-        .cart-item-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .cart-item-price {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .cart-item-remove {
-            background: none;
-            border: none;
-            color: var(--accent);
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .cart-total {
-            padding: 20px;
-            border-top: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .cart-actions {
-            padding: 0 20px 20px;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            display: none;
-        }
-
-        .overlay.active {
-            display: block;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header-top {
-                flex-direction: column;
-            }
-
-            .logo {
-                margin-bottom: 15px;
-            }
-
-            .search-bar {
-                margin: 15px 0;
-                max-width: 100%;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-            }
-
-            nav li {
-                margin: 5px 10px;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .cart-modal {
-                width: 100%;
-                right: -100%;
-            }
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--medium-gray);
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <div class="container">
-            <div class="header-top">
-                <a href="#" class="logo">
-                    <i class="fas fa-book-open"></i>
-                    The Definitive Word
-                </a>
-                <div class="search-bar">
-                    <input type="text" placeholder="Search for books, authors, or categories...">
-                    <button><i class="fas fa-search"></i></button>
-                </div>
-                <div class="user-actions">
-                    <a href="#"><i class="fas fa-user"></i></a>
-                    <a href="#" class="cart-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
-                    </a>
-                </div>
-            </div>
+        <div class="logo">
+            <h1>The Definitive Word</h1>
+            <p>Your Destiny Has Been Written - Simple Store</p>
         </div>
-        <nav>
-            <div class="container">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Fiction</a></li>
-                    <li><a href="#">Non-Fiction</a></li>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Technology</a></li>
-                    <li><a href="#">Business</a></li>
-                    <li><a href="#">Self-Help</a></li>
-                    <li><a href="#">Bestsellers</a></li>
-                </ul>
-            </div>
-        </nav>
+        
+        <div class="store-nav">
+            <button class="nav-btn active" onclick="showSection('all')">
+                <i class="fas fa-store"></i> All Products
+            </button>
+            <button class="nav-btn" onclick="showSection('ebooks')">
+                <i class="fas fa-book"></i> E-books
+            </button>
+            <button class="nav-btn" onclick="showSection('workshops')">
+                <i class="fas fa-calendar-alt"></i> Workshops
+            </button>
+            <button class="nav-btn" onclick="showSection('coaching')">
+                <i class="fas fa-user-graduate"></i> Coaching
+            </button>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Discover Your Next Favorite Read</h1>
-            <p>Explore thousands of ebooks across all genres. Download instantly and start reading today.</p>
-            <a href="#" class="btn btn-accent">Browse Collection</a>
-        </div>
-    </section>
+    <!-- Status Messages -->
+    <div id="statusMessage" class="status-message"></div>
 
-    <!-- Featured Books -->
-    <section class="container">
-        <h2 class="section-title">Featured Books</h2>
-        <div class="books-grid" id="featured-books">
-            <!-- Books will be dynamically loaded here -->
-        </div>
-    </section>
+    <!-- Tutorial Box -->
+    <div class="tutorial-box">
+        <h3><i class="fas fa-graduation-cap"></i> How to Use This Store:</h3>
+        <ol class="tutorial-steps">
+            <li><strong>Step 1:</strong> Click "Login" to create an account (any email works)</li>
+            <li><strong>Step 2:</strong> Browse products and click "Add to Cart"</li>
+            <li><strong>Step 3:</strong> View your cart in the right sidebar</li>
+            <li><strong>Step 4:</strong> Adjust quantities or remove items</li>
+            <li><strong>Step 5:</strong> Click "Checkout" to complete your purchase</li>
+        </ol>
+    </div>
 
-    <!-- Categories -->
-    <section class="categories">
-        <div class="container">
-            <h2 class="section-title">Browse Categories</h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <i class="fas fa-rocket"></i>
-                    <h3>Science Fiction</h3>
-                    <p>Explore other worlds and futures</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-heart"></i>
-                    <h3>Romance</h3>
-                    <p>Stories of love and connection</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-user-secret"></i>
-                    <h3>Mystery</h3>
-                    <p>Unravel puzzles and crimes</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Business</h3>
-                    <p>Grow your career and wealth</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>Self-Help</h3>
-                    <p>Improve your life and mindset</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>Technology</h3>
-                    <p>Stay ahead in the digital world</p>
-                </div>
-            </div>
+    <!-- Quick Stats -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-value" id="cartCount">0</div>
+            <div class="stat-label">Items in Cart</div>
         </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Stay Updated</h2>
-            <p>Subscribe to our newsletter and get the latest book recommendations, exclusive deals, and more.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address">
-                <button type="submit">Subscribe</button>
-            </form>
+        <div class="stat-item">
+            <div class="stat-value" id="cartTotal">R0.00</div>
+            <div class="stat-label">Cart Total</div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>The Definitive Word</h3>
-                    <p>Your premier destination for quality ebooks. Discover, read, and enjoy literature in the digital age.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Categories</h3>
-                    <ul>
-                        <li><a href="#">Fiction</a></li>
-                        <li><a href="#">Non-Fiction</a></li>
-                        <li><a href="#">Science</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Self-Help</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Book Street, Knowledge City</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@thedefinitiveword.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 The Definitive Word. All rights reserved.</p>
-            </div>
+        <div class="stat-item">
+            <div class="stat-value" id="productCount">5</div>
+            <div class="stat-label">Available Products</div>
         </div>
-    </footer>
-
-    <!-- Cart Modal -->
-    <div class="overlay" id="overlay"></div>
-    <div class="cart-modal" id="cart-modal">
-        <div class="cart-header">
-            <h2>Your Cart</h2>
-            <button class="close-cart" id="close-cart"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="cart-items" id="cart-items">
-            <!-- Cart items will be dynamically added here -->
-        </div>
-        <div class="cart-total">
-            <span>Total:</span>
-            <span id="cart-total">$0.00</span>
-        </div>
-        <div class="cart-actions">
-            <button class="btn btn-accent" style="width: 100%;">Checkout</button>
+        <div class="stat-item">
+            <div class="stat-value" id="userStatus">Guest</div>
+            <div class="stat-label">Login Status</div>
         </div>
     </div>
 
-    <script>
-        // Sample book data
-        const books = [
-            {
-                id: 1,
-                title: "The Silent Observer",
-                author: "Megan Foster",
-                price: 12.99,
-                originalPrice: 15.99,
-                image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                category: "Mystery"
-            },
-            {
-                id: 2,
-                title: "Digital Revolution",
-                author: "Alex Chen",
-                price: 14.99,
-                originalPrice: null,
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                category: "Technology"
-            },
-            {
-                id: 3,
-                title: "Echoes of Tomorrow",
-                author: "Sarah Johnson",
-                price: 10.99,
-                originalPrice: 12.99,
-                image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                category: "Science Fiction"
-            },
-            {
-                id: 4,
-                title: "The Mindful Entrepreneur",
-                author: "David Wilson",
-                price: 16.99,
-                originalPrice: null,
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                category: "Business"
-            },
-            {
-                id: 5,
-                title: "Uncharted Waters",
-                author: "Rachel Martinez",
-                price: 11.99,
-                originalPrice: 14.99,
-                image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                category: "Adventure"
-            },
-            {
-                id: 6,
-                title: "The Art of Connection",
-                author: "James Peterson",
-                price: 13.99,
-                originalPrice: null,
-                image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                category: "Self-Help"
-            }
-        ];
-
-        // Cart functionality
-        let cart = [];
-        const cartCount = document.querySelector('.cart-count');
-        const cartModal = document.getElementById('cart-modal');
-        const overlay = document.getElementById('overlay');
-        const closeCart = document.getElementById('close-cart');
-        const cartItems = document.getElementById('cart-items');
-        const cartTotal = document.getElementById('cart-total');
-        const cartIcon = document.querySelector('.cart-icon');
-
-        // Display featured books
-        const featuredBooksContainer = document.getElementById('featured-books');
-        
-        books.forEach(book => {
-            const bookCard = document.createElement('div');
-            bookCard.className = 'book-card';
-            
-            const priceHTML = book.originalPrice 
-                ? `<div class="price"><span class="original-price">$${book.originalPrice}</span> <span class="sale-price">$${book.price}</span></div>`
-                : `<div class="price">$${book.price}</div>`;
-            
-            bookCard.innerHTML = `
-                <div class="book-cover">
-                    <img src="${book.image}" alt="${book.title}">
+    <div class="content-area">
+        <!-- Sidebar - Cart & User -->
+        <div class="sidebar">
+            <!-- User Info / Login -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title"><i class="fas fa-user"></i> Account</h3>
+                <div id="userSection">
+                    <!-- User info will appear here after login -->
                 </div>
-                <div class="book-info">
-                    <h3 class="book-title">${book.title}</h3>
-                    <p class="book-author">by ${book.author}</p>
-                    <div class="book-price">
-                        ${priceHTML}
-                        <button class="btn add-to-cart" data-id="${book.id}">Add to Cart</button>
+                <div id="loginSection">
+                    <p style="margin-bottom: 1rem;">Login to start shopping:</p>
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="loginEmail" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" id="loginPassword" placeholder="Any password works">
+                        </div>
+                        <button class="btn btn-primary btn-full" onclick="quickLogin()">
+                            <i class="fas fa-sign-in-alt"></i> Quick Login
+                        </button>
+                        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-dark);">
+                            <i class="fas fa-info-circle"></i> Demo: Use any email & password
+                        </p>
                     </div>
                 </div>
-            `;
-            
-            featuredBooksContainer.appendChild(bookCard);
-        });
+            </div>
 
-        // Add to cart functionality
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('add-to-cart')) {
-                const bookId = parseInt(e.target.getAttribute('data-id'));
-                const book = books.find(b => b.id === bookId);
-                
-                // Check if book is already in cart
-                const existingItem = cart.find(item => item.id === bookId);
-                
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({
-                        ...book,
-                        quantity: 1
-                    });
+            <!-- Shopping Cart -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title"><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+                <div id="cartItems">
+                    <!-- Cart items will appear here -->
+                </div>
+                <div id="emptyCart" class="empty-state">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Your cart is empty</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Add some products to get started!</p>
+                </div>
+                <div id="cartSummary" style="display: none;">
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="sidebarTotal">R0.00</span>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn btn-primary btn-full" onclick="checkout()">
+                            <i class="fas fa-credit-card"></i> Checkout Now
+                        </button>
+                        <button class="btn btn-outline btn-full" style="margin-top: 0.5rem;" onclick="clearCart()">
+                            <i class="fas fa-trash"></i> Clear Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title"><i class="fas fa-bolt"></i> Quick Actions</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <button class="btn btn-secondary" onclick="addSampleItems()">
+                        <i class="fas fa-magic"></i> Add Sample Items
+                    </button>
+                    <button class="btn btn-outline" onclick="viewDashboard()">
+                        <i class="fas fa-tachometer-alt"></i> View Dashboard
+                    </button>
+                    <button class="btn btn-outline" onclick="showHelp()">
+                        <i class="fas fa-question-circle"></i> Help Guide
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content - Products -->
+        <div id="productsArea">
+            <h2 style="color: var(--blue); margin-bottom: 1.5rem;">Available Products</h2>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 The Definitive Word Ministry. Your Destiny Has Been Written.</p>
+        <p style="margin-top: 0.5rem; color: var(--text-dark);">
+            <i class="fas fa-phone"></i> +27 (0)21 123 4567 | 
+            <i class="fas fa-envelope"></i> info@definitiveword.org
+        </p>
+    </footer>
+
+    <script>
+        // ==================== SIMPLE STORE SYSTEM ====================
+        
+        // Store data
+        const store = {
+            user: JSON.parse(localStorage.getItem('simpleStoreUser')) || null,
+            cart: JSON.parse(localStorage.getItem('simpleStoreCart')) || [],
+            products: [
+                {
+                    id: 1,
+                    type: 'ebook',
+                    title: "Unveiling Your Destiny",
+                    description: "Discover and walk in your God-given purpose. Learn to recognize divine opportunities.",
+                    price: 349.99,
+                    badge: "Bestseller",
+                    icon: "fas fa-book-open"
+                },
+                {
+                    id: 2,
+                    type: 'ebook',
+                    title: "Prophetic Insights",
+                    description: "Understand the prophetic voice in the modern church and your personal life.",
+                    price: 449.99,
+                    badge: "New Release",
+                    icon: "fas fa-dove"
+                },
+                {
+                    id: 3,
+                    type: 'ebook',
+                    title: "The Written Word",
+                    description: "Exploring the power of God's promises and declarations over your life.",
+                    price: 299.99,
+                    icon: "fas fa-bible"
+                },
+                {
+                    id: 4,
+                    type: 'workshop',
+                    title: "Prophetic Activation Workshop",
+                    description: "One-day intensive to activate and strengthen your prophetic gifting.",
+                    price: 599.99,
+                    badge: "Virtual",
+                    icon: "fas fa-calendar-alt"
+                },
+                {
+                    id: 5,
+                    type: 'workshop',
+                    title: "Destiny Mapping Masterclass",
+                    description: "Discover God's blueprint and create a practical roadmap for your purpose.",
+                    price: 799.99,
+                    badge: "In-Person",
+                    icon: "fas fa-map"
+                },
+                {
+                    id: 6,
+                    type: 'coaching',
+                    title: "Personal Prophetic Coaching",
+                    description: "One-on-one sessions to help you walk in your divine purpose.",
+                    price: 999.99,
+                    badge: "1-on-1",
+                    icon: "fas fa-user-graduate"
                 }
-                
-                updateCart();
-                
-                // Show confirmation
-                e.target.textContent = 'Added!';
-                e.target.style.background = 'var(--success)';
-                
-                setTimeout(() => {
-                    e.target.textContent = 'Add to Cart';
-                    e.target.style.background = '';
-                }, 1500);
-            }
-        });
+            ]
+        };
 
-        // Open cart
-        cartIcon.addEventListener('click', function(e) {
-            e.preventDefault();
-            cartModal.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
+        // ==================== INITIAL SETUP ====================
+        function initStore() {
+            updateUI();
+            renderProducts('all');
+            showStatus('Welcome to The Definitive Word Store! Login to start shopping.', 'info');
+        }
 
-        // Close cart
-        closeCart.addEventListener('click', function() {
-            cartModal.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        overlay.addEventListener('click', function() {
-            cartModal.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Update cart
-        function updateCart() {
-            // Update cart count
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
+        // ==================== USER FUNCTIONS ====================
+        function quickLogin() {
+            const email = document.getElementById('loginEmail').value || 'demo@user.com';
+            const password = document.getElementById('loginPassword').value || 'demo123';
             
-            // Update cart items
-            cartItems.innerHTML = '';
+            store.user = {
+                name: email.split('@')[0],
+                email: email,
+                avatar: email.charAt(0).toUpperCase(),
+                joinDate: new Date().toLocaleDateString()
+            };
             
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p>Your cart is empty</p>';
-                cartTotal.textContent = '$0.00';
+            localStorage.setItem('simpleStoreUser', JSON.stringify(store.user));
+            updateUI();
+            showStatus(`Welcome ${store.user.name}! You are now logged in.`, 'success');
+        }
+
+        function logout() {
+            store.user = null;
+            localStorage.removeItem('simpleStoreUser');
+            updateUI();
+            showStatus('You have been logged out.', 'info');
+        }
+
+        // ==================== CART FUNCTIONS ====================
+        function addToCart(productId) {
+            if (!store.user) {
+                showStatus('Please login first!', 'error');
                 return;
             }
             
-            let totalPrice = 0;
+            const product = store.products.find(p => p.id === productId);
+            if (!product) return;
             
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                totalPrice += itemTotal;
-                
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <img src="${item.image}" alt="${item.title}">
-                    <div class="cart-item-details">
-                        <h4 class="cart-item-title">${item.title}</h4>
-                        <p>by ${item.author}</p>
-                        <div class="cart-item-price">$${item.price} x ${item.quantity}</div>
-                        <button class="cart-item-remove" data-id="${item.id}">Remove</button>
-                    </div>
-                `;
-                
-                cartItems.appendChild(cartItem);
-            });
-            
-            cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
-            
-            // Add event listeners to remove buttons
-            document.querySelectorAll('.cart-item-remove').forEach(button => {
-                button.addEventListener('click', function() {
-                    const itemId = parseInt(this.getAttribute('data-id'));
-                    cart = cart.filter(item => item.id !== itemId);
-                    updateCart();
+            // Check if item already in cart
+            const existingItem = store.cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                store.cart.push({
+                    id: product.id,
+                    title: product.title,
+                    price: product.price,
+                    quantity: 1
                 });
-            });
+            }
+            
+            saveCart();
+            updateUI();
+            showStatus(`Added "${product.title}" to cart!`, 'success');
         }
 
-        // Initialize cart
-        updateCart();
+        function removeFromCart(productId) {
+            store.cart = store.cart.filter(item => item.id !== productId);
+            saveCart();
+            updateUI();
+            showStatus('Item removed from cart.', 'info');
+        }
 
-        // Search functionality
-        const searchInput = document.querySelector('.search-bar input');
-        searchInput.addEventListener('keyup', function(e) {
-            if (e.key === 'Enter') {
-                const searchTerm = this.value.toLowerCase();
-                if (searchTerm.trim() !== '') {
-                    alert(`Searching for: ${searchTerm}`);
-                    // In a real application, you would filter books here
-                }
+        function updateQuantity(productId, change) {
+            const item = store.cart.find(item => item.id === productId);
+            if (!item) return;
+            
+            item.quantity += change;
+            
+            if (item.quantity <= 0) {
+                removeFromCart(productId);
+            } else {
+                saveCart();
+                updateUI();
             }
-        });
+        }
 
-        // Newsletter form
-        const newsletterForm = document.querySelector('.newsletter-form');
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input').value;
-            if (email) {
-                alert(`Thank you for subscribing with: ${email}`);
-                this.reset();
+        function clearCart() {
+            if (store.cart.length === 0) {
+                showStatus('Cart is already empty!', 'info');
+                return;
             }
+            
+            if (confirm('Are you sure you want to clear your cart?')) {
+                store.cart = [];
+                saveCart();
+                updateUI();
+                showStatus('Cart cleared!', 'success');
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('simpleStoreCart', JSON.stringify(store.cart));
+        }
+
+        // ==================== CHECKOUT ====================
+        function checkout() {
+            if (!store.user) {
+                showStatus('Please login to checkout!', 'error');
+                return;
+            }
+            
+            if (store.cart.length === 0) {
+                showStatus('Your cart is empty!', 'error');
+                return;
+            }
+            
+            const total = store.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Simple checkout simulation
+            showStatus(`Processing your order of R${total.toFixed(2)}...`, 'info');
+            
+            setTimeout(() => {
+                // Record purchase
+                const purchase = {
+                    id: Date.now(),
+                    items: [...store.cart],
+                    total: total,
+                    date: new Date().toISOString(),
+                    status: 'completed'
+                };
+                
+                // Save purchase history
+                const purchases = JSON.parse(localStorage.getItem('simpleStorePurchases')) || [];
+                purchases.push(purchase);
+                localStorage.setItem('simpleStorePurchases', JSON.stringify(purchases));
+                
+                // Clear cart
+                store.cart = [];
+                saveCart();
+                updateUI();
+                
+                // Show success
+                showStatus(`Order successful! Thank you for your purchase of R${total.toFixed(2)}. Check your email for details.`, 'success');
+                
+                // Show receipt
+                showReceipt(purchase);
+            }, 1500);
+        }
+
+        function showReceipt(purchase) {
+            const itemsList = purchase.items.map(item => 
+                `${item.title} (${item.quantity} × R${item.price}) = R${(item.price * item.quantity).toFixed(2)}`
+            ).join('\n');
+            
+            const receipt = `
+=== ORDER CONFIRMATION ===
+Order #${purchase.id}
+Date: ${new Date(purchase.date).toLocaleString()}
+----------------------------
+${itemsList}
+----------------------------
+TOTAL: R${purchase.total.toFixed(2)}
+----------------------------
+Status: ${purchase.status}
+
+Thank you for your purchase!
+            `;
+            
+            alert(receipt);
+        }
+
+        // ==================== HELPER FUNCTIONS ====================
+        function addSampleItems() {
+            if (!store.user) {
+                showStatus('Please login first!', 'error');
+                return;
+            }
+            
+            // Add one of each product type to cart
+            addToCart(1); // E-book
+            addToCart(4); // Workshop
+            addToCart(6); // Coaching
+            
+            showStatus('Added sample items to your cart!', 'success');
+        }
+
+        function showSection(section) {
+            // Update active button
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Render filtered products
+            renderProducts(section);
+        }
+
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productsGrid');
+            let filteredProducts = store.products;
+            
+            if (filter !== 'all') {
+                filteredProducts = store.products.filter(product => product.type === filter);
+            }
+            
+            grid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="${product.icon}"></i>
+                        ${product.badge ? `<div style="position: absolute; top: 10px; right: 10px; background: var(--gold); color: var(--dark-gray); padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; font-weight: bold;">${product.badge}</div>` : ''}
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">R${product.price.toFixed(2)}</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-small" onclick="addToCart(${product.id})">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn btn-outline btn-small" onclick="showProductDetails(${product.id})">
+                                <i class="fas fa-info-circle"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Update product count
+            document.getElementById('productCount').textContent = filteredProducts.length;
+        }
+
+        function showProductDetails(productId) {
+            const product = store.products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const details = `
+                <strong>${product.title}</strong>
+                <br><br>
+                <strong>Price:</strong> R${product.price.toFixed(2)}
+                <br>
+                <strong>Type:</strong> ${product.type.charAt(0).toUpperCase() + product.type.slice(1)}
+                <br><br>
+                <strong>Description:</strong>
+                <br>
+                ${product.description}
+                <br><br>
+                <strong>Includes:</strong>
+                <br>
+                ${getProductIncludes(product.type)}
+                <br><br>
+                <button onclick="addToCart(${product.id}); this.disabled=true; this.innerHTML='<i class=\\'fas fa-check\\'></i> Added!';" 
+                        style="background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+                    <i class="fas fa-cart-plus"></i> Add to Cart - R${product.price.toFixed(2)}
+                </button>
+            `;
+            
+            alert(details);
+        }
+
+        function getProductIncludes(type) {
+            switch(type) {
+                case 'ebook':
+                    return '• Digital PDF/EPUB format\n• Lifetime access\n• Mobile friendly\n• Printable version';
+                case 'workshop':
+                    return '• Live sessions\n• Digital workbook\n• Q&A access\n• Certificate of completion';
+                case 'coaching':
+                    return '• One-on-one sessions\n• Personalized plan\n• Email support\n• Progress tracking';
+                default:
+                    return '• Digital delivery\n• Lifetime access\n• Support included';
+            }
+        }
+
+        function viewDashboard() {
+            if (!store.user) {
+                showStatus('Please login to view dashboard!', 'error');
+                return;
+            }
+            
+            const purchases = JSON.parse(localStorage.getItem('simpleStorePurchases')) || [];
+            const totalSpent = purchases.reduce((sum, purchase) => sum + purchase.total, 0);
+            
+            const dashboard = `
+                === USER DASHBOARD ===
+                Name: ${store.user.name}
+                Email: ${store.user.email}
+                Member Since: ${store.user.joinDate}
+                ----------------------------
+                Cart Items: ${store.cart.length}
+                Total in Cart: R${store.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}
+                ----------------------------
+                Previous Purchases: ${purchases.length}
+                Total Spent: R${totalSpent.toFixed(2)}
+                ----------------------------
+                Quick Actions:
+                1. Add sample items
+                2. Clear cart
+                3. View purchase history
+            `;
+            
+            alert(dashboard);
+        }
+
+        function showHelp() {
+            const help = `
+                === STORE HELP GUIDE ===
+                
+                BASIC OPERATIONS:
+                1. Login - Click "Quick Login" (any email works)
+                2. Browse - Use the category buttons
+                3. Add to Cart - Click "Add to Cart" on any product
+                4. View Cart - Items appear in right sidebar
+                5. Checkout - Click "Checkout Now"
+                
+                CART CONTROLS:
+                • + / - buttons adjust quantity
+                • Click item price to remove
+                • "Clear Cart" removes everything
+                
+                QUICK TIPS:
+                • "Add Sample Items" fills your cart
+                • "View Dashboard" shows your history
+                • All data saves automatically
+                • No real payment required
+                
+                NEED MORE HELP?
+                Email: info@definitiveword.org
+                Phone: +27 (0)21 123 4567
+            `;
+            
+            alert(help);
+        }
+
+        function showStatus(message, type = 'info') {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.className = `status-message status-${type}`;
+            
+            // Auto-hide success messages after 3 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusEl.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // ==================== UI UPDATES ====================
+        function updateUI() {
+            // Update cart stats
+            const cartCount = store.cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartTotal = store.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            document.getElementById('cartCount').textContent = cartCount;
+            document.getElementById('cartTotal').textContent = `R${cartTotal.toFixed(2)}`;
+            document.getElementById('sidebarTotal').textContent = `R${cartTotal.toFixed(2)}`;
+            
+            // Update user status
+            document.getElementById('userStatus').textContent = store.user ? store.user.name : 'Guest';
+            
+            // Update user section
+            const userSection = document.getElementById('userSection');
+            const loginSection = document.getElementById('loginSection');
+            
+            if (store.user) {
+                userSection.innerHTML = `
+                    <div class="user-info">
+                        <div class="user-avatar">${store.user.avatar}</div>
+                        <div>
+                            <strong>${store.user.name}</strong><br>
+                            <small>${store.user.email}</small>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline btn-full" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                `;
+                userSection.style.display = 'block';
+                loginSection.style.display = 'none';
+            } else {
+                userSection.style.display = 'none';
+                loginSection.style.display = 'block';
+            }
+            
+            // Update cart items
+            const cartItems = document.getElementById('cartItems');
+            const emptyCart = document.getElementById('emptyCart');
+            const cartSummary = document.getElementById('cartSummary');
+            
+            if (store.cart.length === 0) {
+                cartItems.innerHTML = '';
+                emptyCart.style.display = 'block';
+                cartSummary.style.display = 'none';
+            } else {
+                emptyCart.style.display = 'none';
+                cartSummary.style.display = 'block';
+                
+                cartItems.innerHTML = store.cart.map(item => `
+                    <div class="cart-item">
+                        <div>
+                            <div class="cart-item-name">${item.title}</div>
+                            <div class="cart-item-price">R${item.price.toFixed(2)}</div>
+                        </div>
+                        <div class="cart-controls">
+                            <button class="cart-control-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <span style="margin: 0 10px; font-weight: bold;">${item.quantity}</span>
+                            <button class="cart-control-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            <button class="cart-control-btn" onclick="removeFromCart(${item.id})" style="margin-left: 10px; color: var(--red);">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // ==================== START THE STORE ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            initStore();
+            
+            // Auto-login for demo
+            if (!store.user) {
+                setTimeout(() => {
+                    if (confirm("Welcome! Would you like to auto-login for a demo?")) {
+                        quickLogin();
+                    }
+                }, 1000);
+            }
+            
+            console.log("Simple Store Ready!");
+            console.log("Instructions:");
+            console.log("1. Click 'Quick Login'");
+            console.log("2. Add items to cart");
+            console.log("3. Click 'Checkout Now'");
         });
     </script>
 </body>
